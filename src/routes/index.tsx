@@ -18,7 +18,7 @@ const heroImages = [heroImg1, heroImg2, heroImg3, heroImg4];
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "RST Consulting Engineers - Structural & Civil Design, Melbourne" },
+      { title: "RST Consulting Engineers: Structural & Civil Design, Melbourne" },
       {
         name: "description",
         content:
