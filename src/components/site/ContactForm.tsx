@@ -54,7 +54,7 @@ export function ContactForm() {
     try {
       const formData = new FormData();
       formData.append("access_key", import.meta.env.VITE_WEB3FORMS_KEY as string);
-      formData.append("subject", `New enquiry from ${parsed.data.name} — RST Consulting`);
+      formData.append("subject", `New enquiry from ${parsed.data.name}: RST Consulting`);
       formData.append("name", parsed.data.name);
       formData.append("email", parsed.data.email);
       formData.append("phone", parsed.data.phone);
