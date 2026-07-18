@@ -40,9 +40,7 @@ export function StatCounter({ value, suffix = "", label }: StatCounterProps) {
         <span ref={textRef}>0</span>
         <span>{displaySuffix}</span>
       </div>
-      <div className="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-        {label}
-      </div>
+      <div className="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">{label}</div>
     </div>
   );
 }

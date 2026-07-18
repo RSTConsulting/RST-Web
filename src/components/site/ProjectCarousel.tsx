@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 import type { Project } from "./data";
 
 interface ProjectCarouselProps {
@@ -81,13 +81,13 @@ export function ProjectCarousel({ projects, filterKey, onOpen }: ProjectCarousel
                 if (info.offset.x < -60) go(1);
                 else if (info.offset.x > 60) go(-1);
               }}
-              className="group relative block w-full overflow-hidden rounded-xl bg-mist shadow-navy-md aspect-[16/10] md:aspect-[16/9] cursor-pointer touch-pan-y"
+              className="group relative block w-full overflow-hidden rounded-xl bg-mist shadow-navy-md aspect-16/10 md:aspect-video cursor-pointer touch-pan-y"
               aria-label={`Open ${project.title} gallery`}
             >
               <img
                 src={project.cover}
                 alt={project.title}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-900 ease-out group-hover:scale-[1.03]"
                 draggable={false}
               />
             </motion.button>
@@ -95,7 +95,7 @@ export function ProjectCarousel({ projects, filterKey, onOpen }: ProjectCarousel
         </div>
 
         {/* Details side (~40%) */}
-        <div className="md:col-span-2 flex flex-col justify-between min-h-[340px]">
+        <div className="md:col-span-2 flex flex-col justify-between min-h-85">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={project.id + "-txt"}
@@ -120,9 +120,7 @@ export function ProjectCarousel({ projects, filterKey, onOpen }: ProjectCarousel
               <h3 className="mt-3 font-display text-3xl md:text-4xl font-semibold text-navy leading-tight">
                 {project.title}
               </h3>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                {project.description}
-              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">{project.description}</p>
               <div className="mt-6 space-y-1.5">
                 <div className="flex gap-3 text-sm">
                   <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground shrink-0 pt-0.5 w-16">

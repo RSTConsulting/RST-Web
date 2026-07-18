@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 interface Country {
   name: string;
@@ -50,9 +50,7 @@ export function PhoneInput({ value, onChange, id, required, invalid }: PhoneInpu
   const wrapRef = useRef<HTMLDivElement>(null);
 
   // Parse local number from full value
-  const local = value.startsWith(country.dial)
-    ? value.slice(country.dial.length).trim()
-    : value;
+  const local = value.startsWith(country.dial) ? value.slice(country.dial.length).trim() : value;
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
@@ -65,9 +63,7 @@ export function PhoneInput({ value, onChange, id, required, invalid }: PhoneInpu
   }, []);
 
   const filtered = countries.filter(
-    (c) =>
-      c.name.toLowerCase().includes(query.toLowerCase()) ||
-      c.dial.includes(query),
+    (c) => c.name.toLowerCase().includes(query.toLowerCase()) || c.dial.includes(query),
   );
 
   return (
@@ -127,9 +123,7 @@ export function PhoneInput({ value, onChange, id, required, invalid }: PhoneInpu
               </button>
             ))}
             {filtered.length === 0 && (
-              <div className="px-3 py-4 text-sm text-muted-foreground text-center">
-                No matches
-              </div>
+              <div className="px-3 py-4 text-sm text-muted-foreground text-center">No matches</div>
             )}
           </div>
         </div>

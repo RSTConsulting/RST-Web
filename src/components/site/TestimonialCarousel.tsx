@@ -33,9 +33,7 @@ function ReviewCard({ name, text, rating }: Testimonial) {
           {initials}
         </div>
         <div className="flex flex-col gap-0.5">
-          <figcaption className="text-sm font-semibold text-navy leading-tight">
-            {name}
-          </figcaption>
+          <figcaption className="text-sm font-semibold text-navy leading-tight">{name}</figcaption>
           <StarRow rating={rating} />
         </div>
       </div>
@@ -69,8 +67,8 @@ export function TestimonialCarousel({ items }: Props) {
         ))}
       </Marquee>
       {/* Left / right fade edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-mist" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-mist" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-linear-to-r from-mist" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-linear-to-l from-mist" />
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import { Link, useLocation } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Menu, X, Phone, ArrowRight } from "lucide-react";
 import logo from "@/assets/rst_logo.jpeg";
+import { Link, useLocation } from "@tanstack/react-router";
+import { ArrowRight, Menu, Phone, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { contact } from "./data";
 
 const navItems = [
@@ -112,7 +112,7 @@ export function SiteHeader() {
 
       {/* Mobile / Tablet slide-in menu (shown below xl) */}
       <div
-        className={`xl:hidden fixed inset-x-0 bottom-0 top-[76px] z-40 bg-white transition-transform duration-300 overflow-y-auto ${
+        className={`xl:hidden fixed inset-x-0 bottom-0 top-19 z-40 bg-white transition-transform duration-300 overflow-y-auto ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         aria-hidden={!open}
@@ -135,7 +135,9 @@ export function SiteHeader() {
           <div className="mt-auto pt-10 md:pt-14">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 bg-mist/60 p-6 md:p-8 rounded-2xl border border-border/60">
               <div className="space-y-1">
-                <span className="text-xs font-semibold tracking-wider uppercase text-steel block">Call or enquire online</span>
+                <span className="text-xs font-semibold tracking-wider uppercase text-steel block">
+                  Call or enquire online
+                </span>
                 <a
                   href={contact.phoneHref}
                   className="flex items-center gap-2.5 text-navy font-display text-xl md:text-2xl font-semibold hover:text-steel transition-colors"

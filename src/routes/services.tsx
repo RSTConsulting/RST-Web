@@ -1,7 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { services } from "@/components/site/data";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -47,7 +47,6 @@ function ServicesPage() {
         </div>
       </section>
 
-
       <div>
         {services.map((s, i) => {
           const flip = i % 2 === 1;
@@ -59,18 +58,15 @@ function ServicesPage() {
             >
               <div className="container-wide grid lg:grid-cols-12 gap-12 items-center">
                 <Reveal className={`lg:col-span-6 ${flip ? "lg:order-2" : ""}`}>
-                  <div className="aspect-[4/3] bg-navy/5 overflow-hidden rounded-lg shadow-navy-md">
-                    <img
-                      src={s.image}
-                      alt={s.title}
-                      className="h-full w-full object-cover"
-                    />
+                  <div className="aspect-4/3 bg-navy/5 overflow-hidden rounded-lg shadow-navy-md">
+                    <img src={s.image} alt={s.title} className="h-full w-full object-cover" />
                   </div>
                 </Reveal>
-                <Reveal delay={0.1} className={`lg:col-span-6 ${flip ? "lg:order-1 lg:pr-8" : "lg:pl-4"}`}>
-                  <p className="eyebrow mb-4">
-                    {String(i + 1).padStart(2, "0")} · Service
-                  </p>
+                <Reveal
+                  delay={0.1}
+                  className={`lg:col-span-6 ${flip ? "lg:order-1 lg:pr-8" : "lg:pl-4"}`}
+                >
+                  <p className="eyebrow mb-4">{String(i + 1).padStart(2, "0")} · Service</p>
                   <h2 className="font-display text-3xl md:text-4xl font-semibold text-navy leading-[1.1]">
                     {s.title}
                   </h2>
@@ -89,7 +85,6 @@ function ServicesPage() {
           );
         })}
       </div>
-
     </>
   );
 }

@@ -1,5 +1,5 @@
-import { ComponentPropsWithoutRef } from "react";
 import { clsx } from "clsx";
+import { ComponentPropsWithoutRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 function cn(...inputs: Parameters<typeof clsx>) {
@@ -28,7 +28,7 @@ export function Marquee({
     <div
       {...props}
       className={cn(
-        "group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]",
+        "group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] gap-(--gap)",
         vertical ? "flex-col" : "flex-row",
         className,
       )}
@@ -38,11 +38,11 @@ export function Marquee({
         .map((_, i) => (
           <div
             key={i}
-            className={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
+            className={cn("flex shrink-0 justify-around gap-(--gap)", {
               "animate-marquee flex-row": !vertical,
               "animate-marquee-vertical flex-col": vertical,
-              "group-hover:[animation-play-state:paused]": pauseOnHover,
-              "[animation-direction:reverse]": reverse,
+              "group-hover:paused": pauseOnHover,
+              "direction-[reverse]": reverse,
             })}
           >
             {children}

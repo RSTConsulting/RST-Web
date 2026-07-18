@@ -17,12 +17,12 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
       transition={{ type: "spring", stiffness: 260, damping: 24 }}
       className="card-surface group text-left flex flex-col w-full h-full overflow-hidden"
     >
-      <div className="relative overflow-hidden aspect-[4/3] bg-mist shrink-0">
+      <div className="relative overflow-hidden aspect-4/3 bg-mist shrink-0">
         <img
           src={project.cover}
           alt={project.title}
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-900 ease-out group-hover:scale-[1.04]"
         />
         <div className="absolute top-4 left-4 bg-white/95 backdrop-blur px-2.5 py-1 rounded-md text-[10px] font-medium tracking-[0.18em] uppercase text-navy shadow-navy-sm">
           {project.sector}

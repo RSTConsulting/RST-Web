@@ -1,8 +1,8 @@
+import { Check } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { PhoneInput } from "./PhoneInput";
-import { Check } from "lucide-react";
 import { SelectDropdown } from "./SelectDropdown";
 
 const projectTypes = ["Residential", "Commercial", "Industrial", "Institutional"] as const;
@@ -86,13 +86,10 @@ export function ContactForm() {
         <div className="h-12 w-12 rounded-full bg-navy text-white flex items-center justify-center shadow-navy-md">
           <Check className="h-6 w-6" strokeWidth={2.5} />
         </div>
-        <h3 className="mt-6 font-display text-2xl font-semibold text-navy">
-          Message received.
-        </h3>
+        <h3 className="mt-6 font-display text-2xl font-semibold text-navy">Message received.</h3>
         <p className="mt-3 text-muted-foreground max-w-md">
-          Thanks {values.name.split(" ")[0]} - we've logged your enquiry and
-          will respond within one business day. For anything urgent, please
-          call (03) 9540 3640.
+          Thanks {values.name.split(" ")[0]} - we've logged your enquiry and will respond within one
+          business day. For anything urgent, please call (+61) 04024 52824.
         </p>
         <button
           type="button"

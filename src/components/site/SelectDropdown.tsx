@@ -1,5 +1,5 @@
+import { Check, ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Check } from "lucide-react";
 
 interface SelectDropdownProps {
   id?: string;

@@ -1,13 +1,15 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { AnimatePresence, motion } from "framer-motion";
-import { useMemo, useState } from "react";
-import { X, ChevronDown } from "lucide-react";
-import { z } from "zod";
+import { SectorMarquee } from "@/components/site/ProjectGrid";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { ProjectCarousel } from "@/components/site/ProjectCarousel";
-import { projects, type Project, type Sector } from "@/components/site/data";
+import { sectorGalleries, type Sector } from "@/components/site/data";
+import { createFileRoute } from "@tanstack/react-router";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, X } from "lucide-react";
+import { useMemo, useState } from "react";
+import { z } from "zod";
 
-const sectorSchema = z.enum(["All", "Commercial", "Residential", "Industrial", "Institutional"]).catch("All");
+const sectorSchema = z
+  .enum(["All", "Commercial", "Residential", "Industrial", "Institutional"])
+  .catch("All");
 
 const searchSchema = z.object({
   sector: z.enum(["Commercial", "Residential", "Industrial", "Institutional"]).optional(),
@@ -36,18 +38,21 @@ export const Route = createFileRoute("/work")({
   component: WorkPage,
 });
 
-const tabs = ["All", "Commercial", "Residential", "Industrial", "Institutional"] as const;
+const tabs = ["All", "Residential", "Commercial", "Industrial", "Institutional"] as const;
 
 function WorkPage() {
   const { sector: initialSector } = Route.useSearch();
   const [active, setActive] = useState<(typeof tabs)[number]>(
     sectorSchema.parse(initialSector ?? "All"),
   );
-  const [open, setOpen] = useState<Project | null>(null);
+  const [openImage, setOpenImage] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const filtered = useMemo(
-    () => (active === "All" ? projects : projects.filter((p) => p.sector === (active as Sector))),
+  const activeSector = useMemo(
+    () =>
+      active === "All"
+        ? sectorGalleries[0]
+        : sectorGalleries.find((s) => s.sector === (active as Sector)),
     [active],
   );
 
@@ -57,12 +62,10 @@ function WorkPage() {
         <div className="container-wide w-full">
           <SectionHeading
             eyebrow="Our work"
-            title={<>Ten years of structures across Melbourne's four building sectors.</>}
+            title={<>Twenty Two years of structures across Melbourne.</>}
             lede="Commercial fitouts, residential renovations, industrial framing, institutional retrofits - a selection of recent and past projects."
           />
           <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-xs uppercase tracking-[0.18em] text-steel font-medium">
-            <span>{projects.length} featured projects</span>
-            <span className="text-border">·</span>
             <span>4 sectors</span>
             <span className="text-border">·</span>
             <span>Residential · Commercial · Industrial · Institutional</span>
@@ -70,10 +73,8 @@ function WorkPage() {
         </div>
       </section>
 
-
-      <section className="top-[72px] z-30">
+      <section className="top-18 z-30">
         <div className="container-wide py-5 md:py-4">
-          {/* Mobile Phone Dropdown (< md) */}
           <div className="relative md:hidden">
             <button
               type="button"
@@ -82,13 +83,14 @@ function WorkPage() {
               aria-expanded={isDropdownOpen}
             >
               <div className="flex items-center gap-2.5">
-                <span className="text-steel text-xs uppercase tracking-wider font-semibold">Sector:</span>
-                <span className="font-semibold text-navy">{active}</span>
-                <span className="inline-flex items-center justify-center rounded-full bg-white px-2 py-0.5 text-xs font-semibold text-navy shadow-sm border border-border/40">
-                  {active === "All" ? projects.length : projects.filter((p) => p.sector === active).length}
+                <span className="text-steel text-xs uppercase tracking-wider font-semibold">
+                  Sector:
                 </span>
+                <span className="font-semibold text-navy">{active}</span>
               </div>
-              <ChevronDown className={`h-4 w-4 text-steel transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`} />
+              <ChevronDown
+                className={`h-4 w-4 text-steel transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`}
+              />
             </button>
 
             <AnimatePresence>
@@ -101,7 +103,6 @@ function WorkPage() {
                   className="absolute left-0 right-0 top-full mt-2 z-50 rounded-xl bg-white border border-border shadow-navy-lg p-1.5 space-y-1 overflow-hidden"
                 >
                   {tabs.map((t) => {
-                    const count = t === "All" ? projects.length : projects.filter((p) => p.sector === t).length;
                     const isSelected = active === t;
                     return (
                       <button
@@ -112,21 +113,10 @@ function WorkPage() {
                           setIsDropdownOpen(false);
                         }}
                         className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                          isSelected
-                            ? "bg-navy text-white shadow-sm"
-                            : "text-navy hover:bg-mist"
+                          isSelected ? "bg-navy text-white shadow-sm" : "text-navy hover:bg-mist"
                         }`}
                       >
                         <span>{t}</span>
-                        <span
-                          className={`inline-flex items-center justify-center rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums transition-colors ${
-                            isSelected
-                              ? "bg-white/20 text-white"
-                              : "bg-mist text-navy/70 border border-border/40"
-                          }`}
-                        >
-                          {count}
-                        </span>
                       </button>
                     );
                   })}
@@ -139,7 +129,6 @@ function WorkPage() {
           <div className="hidden md:flex items-center overflow-x-auto no-scrollbar">
             <div className="inline-flex items-center gap-1.5 rounded-full bg-mist/80 p-1.5 border border-border/60 backdrop-blur-md">
               {tabs.map((t) => {
-                const count = t === "All" ? projects.length : projects.filter((p) => p.sector === t).length;
                 const isSelected = active === t;
                 return (
                   <button
@@ -158,15 +147,6 @@ function WorkPage() {
                       />
                     )}
                     <span className="relative z-10">{t}</span>
-                    <span
-                      className={`relative z-10 inline-flex items-center justify-center rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums transition-colors ${
-                        isSelected
-                          ? "bg-white/20 text-white"
-                          : "bg-white text-navy/70 shadow-sm border border-border/40"
-                      }`}
-                    >
-                      {count}
-                    </span>
                   </button>
                 );
               })}
@@ -176,70 +156,74 @@ function WorkPage() {
       </section>
 
       <section className="py-16 md:py-16">
-        <div className="container-wide">
-          <ProjectCarousel
-            projects={filtered}
-            filterKey={active}
-            onOpen={(p) => setOpen(p)}
-          />
+        <div className="container-wide space-y-16 md:space-y-20">
+          {active === "All"
+            ? sectorGalleries.map((s) => (
+                <div key={s.sector}>
+                  <div className="mb-6 md:mb-8">
+                    <h2 className="font-display text-2xl md:text-3xl font-semibold text-navy">
+                      {s.sector}
+                    </h2>
+                    <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-2xl">
+                      {s.description}
+                    </p>
+                  </div>
+                  <SectorMarquee images={s.gallery} onOpen={setOpenImage} />
+                </div>
+              ))
+            : activeSector && (
+                <div>
+                  <div className="mb-6 md:mb-8">
+                    <h2 className="font-display text-2xl md:text-3xl font-semibold text-navy">
+                      {activeSector.sector}
+                    </h2>
+                    <p className="mt-2 text-sm md:text-base text-muted-foreground max-w-2xl">
+                      {activeSector.description}
+                    </p>
+                  </div>
+                  <SectorMarquee images={activeSector.gallery} onOpen={setOpenImage} />
+                </div>
+              )}
         </div>
       </section>
 
-
-      <Lightbox project={open} onClose={() => setOpen(null)} />
+      <ImageLightbox src={openImage} onClose={() => setOpenImage(null)} />
     </>
   );
 }
 
-function Lightbox({ project, onClose }: { project: Project | null; onClose: () => void }) {
+function ImageLightbox({ src, onClose }: { src: string | null; onClose: () => void }) {
   return (
     <AnimatePresence>
-      {project && (
+      {src && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[60] bg-navy/80 backdrop-blur-sm overflow-y-auto"
+          className="fixed inset-0 z-60 bg-navy/80 backdrop-blur-sm overflow-y-auto"
           onClick={onClose}
         >
-          <div className="min-h-full flex items-start md:items-center justify-center p-4 md:p-10">
+          <div className="min-h-full flex items-center justify-center p-4 md:p-10">
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.98 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white max-w-4xl w-full rounded-xl overflow-hidden shadow-navy-lg"
+              className="bg-white max-w-3xl w-full rounded-xl overflow-hidden shadow-navy-lg"
             >
-              <div className="flex items-start justify-between p-6 md:p-8 border-b border-border">
-                <div>
-                  <p className="eyebrow mb-2">{project.sector}</p>
-                  <h3 className="font-display text-2xl md:text-3xl font-semibold text-navy">
-                    {project.title}
-                  </h3>
-                </div>
+              <div className="flex items-center justify-end p-3 border-b border-border">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="p-2 -mr-2 text-navy hover:text-steel"
+                  className="p-2 text-navy hover:text-steel"
                   aria-label="Close"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
-              <div className="p-6 md:p-8 space-y-6">
-                <p className="text-muted-foreground leading-relaxed">{project.description}</p>
-                <div className="grid gap-4 md:grid-cols-2">
-                  {project.gallery.map((src, i) => (
-                    <div key={i} className="aspect-[4/3] bg-mist overflow-hidden rounded-lg">
-                      <img src={src} alt="" className="h-full w-full object-cover" />
-                    </div>
-                  ))}
-                </div>
-                <div className="pt-4">
-                  <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Scope: </span>
-                  <span className="text-sm text-navy font-medium">{project.scope}</span>
-                </div>
+              <div className="p-4 md:p-6">
+                <img src={src} alt="" className="w-full h-auto rounded-lg" />
               </div>
             </motion.div>
           </div>

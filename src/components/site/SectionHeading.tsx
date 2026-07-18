@@ -20,12 +20,8 @@ export function SectionHeading({
   return (
     <Reveal className={`${alignClass} max-w-3xl ${className}`}>
       {eyebrow && <p className="eyebrow mb-5">{eyebrow}</p>}
-      <h2 className="text-3xl md:text-5xl font-semibold leading-[1.05] text-navy">
-        {title}
-      </h2>
-      {lede && (
-        <p className="mt-5 text-lg text-muted-foreground max-w-2xl">{lede}</p>
-      )}
+      <h2 className="text-3xl md:text-5xl font-semibold leading-[1.05] text-navy">{title}</h2>
+      {lede && <p className="mt-5 text-lg text-muted-foreground max-w-2xl">{lede}</p>}
     </Reveal>
   );
 }

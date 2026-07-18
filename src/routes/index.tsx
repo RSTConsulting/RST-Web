@@ -1,3 +1,4 @@
+import heroImg0 from "@/assets/cover_rst.jpg";
 import heroImg2 from "@/assets/rst_img_1.webp";
 import heroImg1 from "@/assets/rst_img_4.webp";
 import heroImg4 from "@/assets/rst_img_5.webp";
@@ -13,7 +14,7 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-const heroImages = [heroImg1, heroImg2, heroImg3, heroImg4];
+const heroImages = [heroImg0, heroImg1, heroImg2, heroImg3, heroImg4];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -78,7 +79,7 @@ function Hero() {
             className="absolute inset-0 h-full w-full object-cover"
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-surface/75 via-navy-surface/45 to-navy-surface/20" />
+        <div className="absolute inset-0 bg-linear-to-r from-navy-surface/75 via-navy-surface/45 to-navy-surface/20" />
       </motion.div>
 
       <div className="relative container-wide w-full py-16 md:py-20">
@@ -88,7 +89,7 @@ function Hero() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="eyebrow text-white"
+              className="eyebrow text-white ml-2 text-sm"
             >
               Consulting Engineers · Springvale, Victoria
             </motion.p>
@@ -99,7 +100,7 @@ function Hero() {
               className="mt-6 font-display font-semibold text-white leading-[1.05] tracking-tight"
               style={{ fontSize: "clamp(2rem, 5vw, 4.25rem)" }}
             >
-              Structural &amp; civil engineering design for the buildings Melbourne actually builds.
+              Structural, civil &amp; drainge engineering in Victoria.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -216,8 +217,8 @@ function WhatWeDo() {
 
 function FeaturedWork() {
   const featured = [
-    projects.find((p) => p.sector === "Commercial"),
     projects.find((p) => p.sector === "Residential"),
+    projects.find((p) => p.sector === "Commercial"),
     projects.find((p) => p.sector === "Industrial"),
     projects.find((p) => p.sector === "Institutional"),
   ].filter(Boolean) as typeof projects;
@@ -288,11 +289,11 @@ function WhyRST() {
       <div className="container-wide">
         <div className="grid lg:grid-cols-12 gap-14">
           <div className="lg:col-span-4">
-            <p className="eyebrow !text-steel mb-5">Why RST</p>
-            <h2 className="font-display text-3xl md:text-5xl font-semibold text-white leading-[1.05]">
-              Engineering firms are judged on the boring things.
+            <p className="eyebrow mb-5 text-white text-xl">Why RST ?</p>
+            <h2 className="font-display text-3xl md:text-4xl font-semibold text-white leading-[1.05]">
+              Technical skill. <br /> Customer support. <br /> Quality design.
             </h2>
-            <p className="mt-6 text-white/70 max-w-md">
+            <p className="mt-6 text-white/90 max-w-md">
               Delivered on time. Priced honestly. Answering the phone. That's the standard we've
               held for over a decade.
             </p>
