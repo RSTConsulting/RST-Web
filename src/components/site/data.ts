@@ -10,11 +10,11 @@ import img7 from "@/assets/rst_img_7.webp";
 // Commercial
 import comm1 from "@/assets/sectors/comm/comm1.jpg";
 import comm2 from "@/assets/sectors/comm/comm2.png";
-import comm3 from "@/assets/sectors/comm/Comm3.jpg";
+import comm3 from "@/assets/sectors/comm/Comm3.JPG";
 import comm4 from "@/assets/sectors/comm/comm4.jpg";
 import comm5 from "@/assets/sectors/comm/comm5.jpg";
-import comm6 from "@/assets/sectors/comm/comm6.jpg";
-import comm7 from "@/assets/sectors/comm/comm7.jpg";
+import comm6 from "@/assets/sectors/comm/comm6.JPG";
+import comm7 from "@/assets/sectors/comm/comm7.JPG";
 import comm8 from "@/assets/sectors/comm/comm8.webp";
 
 // Industrial
