@@ -18,33 +18,33 @@ import comm7 from "@/assets/sectors/comm/comm7.jpg";
 import comm8 from "@/assets/sectors/comm/comm8.webp";
 
 // Industrial
-import indus1 from "@/assets/sectors/indus/indus1.jpg";
-import indus2 from "@/assets/sectors/indus/indus2.jpg";
-import indus3 from "@/assets/sectors/indus/indus3.jpg";
-import indus4 from "@/assets/sectors/indus/indus4.jpg";
+import indus1 from "@/assets/sectors/indus/indus1.JPG";
+import indus2 from "@/assets/sectors/indus/indus2.JPG";
+import indus3 from "@/assets/sectors/indus/indus3.JPG";
+import indus4 from "@/assets/sectors/indus/indus4.JPG";
 import indus5 from "@/assets/sectors/indus/indus5.jpg";
 
 // Institutional
 import insti6 from "@/assets/sectors/insiti/insiti6.webp";
-import insti1 from "@/assets/sectors/insiti/insti1.jpg";
-import insti2 from "@/assets/sectors/insiti/insti2.jpg";
-import insti3 from "@/assets/sectors/insiti/insti3.jpg";
+import insti1 from "@/assets/sectors/insiti/insti1.JPG";
+import insti2 from "@/assets/sectors/insiti/insti2.JPG";
+import insti3 from "@/assets/sectors/insiti/insti3.JPG";
 import insti4 from "@/assets/sectors/insiti/insti4.png";
 import insti5 from "@/assets/sectors/insiti/insti5.jpg";
 
 // Residential
 import res1 from "@/assets/sectors/resi/res1.jpg";
-import res10 from "@/assets/sectors/resi/res10.jpg";
-import res11 from "@/assets/sectors/resi/res11.jpg";
+import res10 from "@/assets/sectors/resi/res10.JPG";
+import res11 from "@/assets/sectors/resi/res11.JPG";
 import res12 from "@/assets/sectors/resi/res12.webp";
 import res2 from "@/assets/sectors/resi/res2.jpg";
 import res3 from "@/assets/sectors/resi/res3.png";
 import res4 from "@/assets/sectors/resi/res4.png";
 import res5 from "@/assets/sectors/resi/res5.png";
 import res6 from "@/assets/sectors/resi/res6.png";
-import res7 from "@/assets/sectors/resi/res7.jpg";
-import res8 from "@/assets/sectors/resi/res8.jpg";
-import res9 from "@/assets/sectors/resi/res9.jpg";
+import res7 from "@/assets/sectors/resi/res7.JPG";
+import res8 from "@/assets/sectors/resi/res8.JPG";
+import res9 from "@/assets/sectors/resi/res9.JPG";
 
 export type Sector = "Commercial" | "Residential" | "Industrial" | "Institutional";
 
