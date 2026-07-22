@@ -1,8 +1,8 @@
 import heroImg0 from "@/assets/cover_rst.jpg";
-import heroImg2 from "@/assets/rst_img_1.webp";
-import heroImg1 from "@/assets/rst_img_4.webp";
-import heroImg4 from "@/assets/rst_img_5.webp";
-import heroImg3 from "@/assets/rst_img_6.webp";
+import comm1 from "@/assets/sectors/comm/comm1.jpg";
+import indus1 from "@/assets/sectors/indus/indus4.JPG";
+import insti1 from "@/assets/sectors/insiti/insti4.png";
+import res1 from "@/assets/sectors/resi/res2.jpg";
 import { ProjectCard } from "@/components/site/ProjectCard";
 import { Reveal, Stagger, staggerItem } from "@/components/site/Reveal";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -14,7 +14,7 @@ import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-const heroImages = [heroImg0, heroImg1, heroImg2, heroImg3, heroImg4];
+const heroImages = [heroImg0, res1, comm1, indus1, insti1];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -60,7 +60,7 @@ function Hero() {
   useEffect(() => {
     const t = setInterval(() => {
       setIndex((i) => (i + 1) % heroImages.length);
-    }, 5500);
+    }, 2000);
     return () => clearInterval(t);
   }, []);
 
@@ -75,8 +75,8 @@ function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.4, ease: "easeInOut" }}
-            className="absolute inset-0 h-full w-full object-cover"
+            transition={{ duration: 0.9, ease: "easeInOut" }}
+            className="absolute inset-0 h-full w-full object-cover [object-position:50%_20%]"
           />
         </AnimatePresence>
         <div className="absolute inset-0 bg-linear-to-r from-navy-surface/75 via-navy-surface/45 to-navy-surface/20" />
